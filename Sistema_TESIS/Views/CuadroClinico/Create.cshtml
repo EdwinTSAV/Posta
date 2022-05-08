@@ -1,0 +1,257 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="card h-75 mt-lg-5">
+    <div class="text-center mt-3 mb-3">
+        <h3 class="card-title text-dark font-weight-bold"> Ficha de seguimiento clinico</h3>
+    </div>
+    <form action="/CuadroClinico/Create" method="post">
+        <input type="hidden" name="PersonaId" value="@ViewBag.PersonaId" />
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Tipo de monitoreo</label>
+            </div>
+            <div class="col-xl-2 ml-3 custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="TipoMonitoreo" id="TipoMonitoreo0" value="Atencion Hospital" />
+                <label class="custom-control-label" for="TipoMonitoreo0">Atencion Hospital</label>
+            </div>
+            <div class="col-xl-2 custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="TipoMonitoreo" id="TipoMonitoreo1" value="Visita Domiciliaria" />
+                <label class="custom-control-label" for="TipoMonitoreo1">Visita Domiciliaria</label>
+            </div>
+        </div>
+        <!--Hola? esto sirve o donde se guarda? gaaaaaaa-->
+        <div id="equiposMedicos" class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>¿Tiene equipos para realizar las mediciones?</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="eqMe" id="eqMe0" value="" />
+                <label class="custom-control-label" for="eqMe0">Si</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="eqMe" id="eqMe1" value="" />
+                <label class="custom-control-label" for="eqMe1">No</label>
+            </div>
+        </div>
+        <div id="funcionesVitales" class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Funciones Vitales</label>
+            </div>
+            <div class="col-xl-6 ">
+                <label>Presion arterial</label>
+                <div class="form-group row">
+                    <div class="col-xs-2 ml-3">
+                        <input type="text" class="form-control  " name="PresionArterialSistolica" />
+                    </div>
+                    <label class="label  mx-2">/</label>
+                    <div class="col-xs-2 ">
+                        <input type="text" class="col-xs-2 form-control mb-2" name="PresionArterialDiastolica" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <label>Frecuencia Cardiaca</label>
+                <input type="text" class="form-control" name="FrecuenciaCardiaca" value="" />
+            </div>
+            <div class="col-xl-6">
+                <label>Frecuencia Respiratorio</label>
+                <input type="text" class="form-control" name="FrecuencaRespiratoria" value="" />
+            </div>
+            <div class="col-xl-6">
+                <label>Temperatura</label>
+                <input type="text" class="form-control" name="Temperatura" value="" />
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Signos y sintomas</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[0].Sintoma" value="Tos" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[0].EstaMarcado" id="check0" value="true" />
+                <label class="custom-control-label" for="check0">Tos</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[1].Sintoma" value="Dolor de Garganta" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[1].EstaMarcado" id="check1" value="true" />
+                <label class="custom-control-label" for="check1">Dolor de Garganta</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[2].Sintoma" value="Congestion nasal" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[2].EstaMarcado" id="check2" value="true" />
+                <label class="custom-control-label" for="check2">Congestion nasal</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[3].Sintoma" value="Fiebre" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[3].EstaMarcado" id="check3" value="true" />
+                <label class="custom-control-label" for="check3">Fiebre</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[4].Sintoma" value="Malestar general" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[4].EstaMarcado" id="check4" value="true" />
+                <label class="custom-control-label" for="check4">Malestar general</label>
+
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[5].Sintoma" value="Dificultad respiratoria" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[5].EstaMarcado" id="check5" value="true" />
+                <label class="custom-control-label" for="check5">Difucultad respiratoria</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[6].Sintoma" value="Diarrea" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[6].EstaMarcado" id="check6" value="true" />
+                <label class="custom-control-label" for="check6">Diarrea</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[7].Sintoma" value="Nausea/Vomito" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[7].EstaMarcado" id="check7" value="true" />
+                <label class="custom-control-label" for="check7">Nausea/Vomito</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[8].Sintoma" value="Cefalea" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[8].EstaMarcado" id="check8" value="true" />
+                <label class="custom-control-label" for="check8">Cefalea</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[9].Sintoma" value="Irritabilidad/Confusion" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[9].EstaMarcado" id="check9" value="true" />
+                <label class="custom-control-label" for="check9">Irritabilidad/Confusion</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[10].Sintoma" value="Dolor muscular" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[10].EstaMarcado" id="check10" value="true" />
+                <label class="custom-control-label" for="check10">Dolor muscular</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[11].Sintoma" value="Dolor abdominal" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[11].EstaMarcado" id="check11" value="true" />
+                <label class="custom-control-label" for="check11">Dolor abdominal</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[12].Sintoma" value="Dolor pecho" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[12].EstaMarcado" id="check12" value="true" />
+                <label class="custom-control-label" for="check12">Dolor pecho</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="sintomas[13].Sintoma" value="Dolor articulaciones" />
+                <input type="checkbox" class="custom-control-input" name="sintomas[13].EstaMarcado" id="check13" value="true" />
+                <label class="custom-control-label" for="check13">Dolor articulaciones</label>
+            </div>
+            <div class="col-xl-12 ml-3 custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="sintomas[14].EstaMarcado" id="check14" value="true" />
+                <label class="custom-control-label" for="check14">Otro</label>
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="sintomas[14].Sintoma" placeholder="Especificar" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Signos de alarma</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="alarma[0].Sintoma" value="Disnea" />
+                <input type="checkbox" class="custom-control-input" name="alarma[0].EstaMarcado" id="2check0" value="true" />
+                <label class="custom-control-label" for="2check0">Disnea</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="alarma[1].Sintoma" value="Taquipnea(>=22rpm)" />
+                <input type="checkbox" class="custom-control-input" name="alarma[1].EstaMarcado" id="2check1" value="true" />
+                <label class="custom-control-label" for="2check1">Taquipnea(>=22rpm)</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="alarma[2].Sintoma" value="Saturacion de oxigeno < 92%" />
+                <input type="checkbox" class="custom-control-input" name="alarma[2].EstaMarcado" id="2check2" value="true" />
+                <label class="custom-control-label" for="2check2">Saturacion de oxigeno < 92%</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="alarma[3].Sintoma" value="Alteracion de la conciencia" />
+                <input type="checkbox" class="custom-control-input" name="alarma[3].EstaMarcado" id="2check3" value="true" />
+                <label class="custom-control-label" for="2check3">Alteracion de la conciencia</label>
+            </div>
+            <div class="col-xl-4 ml-3 custom-control custom-checkbox">
+                <input type="hidden" name="alarma[4].Sintoma" value="Ningun Signo de alarma" />
+                <input type="checkbox" class="custom-control-input" name="alarma[4].EstaMarcado" id="2check4" value="true" />
+                <label class="custom-control-label" for="2check4">Ningun Signo de alarma</label>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Estado del paciente</label>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3 ml-4">
+                    <select name="Estado" class="custom-select">
+                        <option>Elegir</option>
+                        <option value="Leve">Leve</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Severo">Severo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Observaciones</label>
+            </div>
+            <div class="col-xl-5">
+                <textarea name="Observaciones" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Costo por consulta</label>
+            </div>
+            <div class="col-xl-5">
+                <input type="number" class="form-control" name="Costo" />
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Antecedentes</label>
+            </div>
+            <div class="col-xl-5">
+                <textarea name="Antecedentes" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Diagnostico</label>
+            </div>
+            <div class="col-xl-5">
+                <textarea name="Diagnostico" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Examen</label>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3 ml-4">
+                    <select name="Examen" class="custom-select">
+                        <option>Elegir</option>
+                        <option value="Examen Fisico">Examen Fisico</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-6 text-center">
+                <button class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+            <div class="col-xl-6 text-center">
+                <a class="btn btn-danger" href="/HistoriaClinica/Index?id=@ViewBag.personaId"><i class="fas fa-times"></i> Cancelar</a>
+            </div>
+        </div>
+    </form>
+
+</div>

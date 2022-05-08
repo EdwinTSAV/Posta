@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+    ViewData["Title"] = "Index";
+}
+@if (ViewBag.Cantidad > 0)
+{
+    <div class="col-xl-12 my-3">
+        <h2 class="blue-text font-weight-bold">Pruebas</h2>
+
+    </div>
+    <div class="col-xl-12 my-3">
+        <table class="table">
+            <thead class="light-blue text-white">
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Resultado</th>
+                    <th scope="col">Tipo Muestra</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.FechaHoraRealizada.ToShortDateString()</th>
+                        <td>@item.Resultado</td>
+                        <td>@item.TipoMuestra</td>
+                        <td>
+                            <a href="/Prueba/Ver?id=@item.PruebaId" class="btn btn-outline-default">Ver</a> 
+                            <a href="/Prueba/Update?id=@item.PruebaId" class="btn btn-outline-default">Actualizar</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}

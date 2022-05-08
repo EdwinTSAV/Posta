@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="card h-75 mt-lg-5">
+    <div class="text-center mt-3 mb-3">
+        <h3 class="card-title text-dark font-weight-bold"> Ficha de Realizacion de prueba</h3>
+    </div>
+    <form action="/Prueba/Create" method="post">
+        <input type="hidden" name="HistoriaClinicaId" value="@ViewBag.HistoriaClinicaId.HistoriaClinicaId" />
+        <div class="row my-3 mx-3">
+            <div class="col-xs-4 ml-3">
+                <label>Fecha</label>
+                <input type="date" class="form-control" name="FechaHoraRealizada"  />
+            </div>
+            <div class="col-xs-6 ml-3">
+                <div class="row ml-5">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label>Tipo de muestra</label>
+                        </div>
+                        
+                        <div class="col-md-12 ml-1">
+                            <select name="TipoMuestra" class="custom-select">
+                                <option selected disabled>Elegir</option>
+                                <option value="Molecular">Molecular</option>
+                                <option value="Rapida">Rapida</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Resultado</label>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3 ml-4">
+                    <select name="Resultado" class="custom-select">
+                        <option selected disabled>Elegir</option>
+                        <option value="No Reactivo">No Reactivo</option>
+                        <option value="Indeterminado">Indeterminado</option>
+                        <option value="IgM Reactivo">IgM Reactivo</option>
+                        <option value="IgG Reactivo">IgG Reactivo</option>
+                        <option value="IgM e IgG Reactivo">IgM e IgG Reactivo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Observaciones</label>
+            </div>
+            <div class="col-xl-5">
+                <textarea name="Observacion" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-6 text-center">
+                <button class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+            <div class="col-xl-6 text-center">
+                <a class="btn btn-danger" href="/HistoriaClinica/Index?id=@ViewBag.HistoriaClinicaId.PersonaId"><i class="fas fa-times"></i> Cancelar</a>
+            </div>
+        </div>
+    </form>
+
+</div>

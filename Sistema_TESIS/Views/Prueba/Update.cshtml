@@ -1,0 +1,124 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Update";
+}
+
+
+<div class="card h-75 mt-lg-5">
+    <div class="text-center mt-3 mb-3">
+        <h3 class="card-title text-dark font-weight-bold">Actualizar Ficha de Realizacion de prueba</h3>
+    </div>
+    <form action="/Prueba/Update" method="post">
+        <input type="hidden" name="PruebaId" value="@Model.PruebaId" />
+        <input type="hidden" name="HistoriaClinicaId" value="@ViewBag.HistoriaClinicaId.HistoriaClinicaId" />
+        <div class="row my-3 mx-3">
+            <div class="col-xs-4 ml-3">
+                <label>Fecha</label>
+                <input type="date" class="form-control" name="FechaHoraRealizada" value="@Model.FechaHoraRealizada" />
+            </div>
+            <div class="col-xs-6 ml-3">
+                <div class="row ml-5">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label>Tipo de muestra</label>
+                        </div>
+
+                        <div class="col-md-12 ml-1">
+                            <select name="TipoMuestra" class="custom-select">
+                                <option selected disabled>Elegir</option>
+                                @if (Model.TipoMuestra == "Molecular")
+                                {
+                                    <option value="Molecular" selected>Molecular</option>
+                                }
+                                else
+                                {
+                                    <option value="Molecular">Molecular</option>
+                                }
+                                @if (Model.TipoMuestra == "Rapida")
+                                {
+                                    <option value="Rapida" selected>Rapida</option>
+                                }
+                                else
+                                {
+                                    <option value="Rapida">Rapida</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Resultado</label>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-3 ml-4">
+                    <select name="Resultado" class="custom-select">
+                        <option disabled>Elegir</option>
+                        @if (Model.Resultado == "No Reactivo")
+                        {
+                            <option value="No Reactivo" selected>No Reactivo</option>
+                        }
+                        else
+                        {
+                            <option value="No Reactivo">No Reactivo</option>
+                        }
+                        @if (Model.Resultado == "Indeterminado")
+                        {
+                            <option value="Indeterminado" selected>Indeterminado</option>
+                        }
+                        else
+                        {
+                            <option value="Indeterminado">Indeterminado</option>
+                        }
+                        @if (Model.Resultado == "IgM Reactivo")
+                        {
+                            <option value="IgM Reactivo" selected>IgM Reactivo</option>
+                        }
+                        else
+                        {
+                            <option value="IgM Reactivo">IgM Reactivo</option>
+                        }
+                        @if (Model.Resultado == "IgG Reactivo")
+                        {
+                            <option value="IgG Reactivo" selected>IgG Reactivo</option>
+                        }
+                        else
+                        {
+                            <option value="IgG Reactivo">IgG Reactivo</option>
+                        }
+                        @if (Model.Resultado == "IgM e IgG Reactivo")
+                        {
+                            <option value="IgM e IgG Reactivo" selected>IgM e IgG Reactivo</option>
+                        }
+                        else
+                        {
+                            <option value="IgM e IgG Reactivo">IgM e IgG Reactivo</option>
+                        }
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12">
+                <label>Observaciones</label>
+            </div>
+            <div class="col-xl-5">
+                <textarea name="Observacion" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row my-3 mx-3">
+            <div class="col-xl-6 text-center">
+                <button class="btn btn-success"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+            <div class="col-xl-6 text-center">
+                <a class="btn btn-danger" href="/HistoriaClinica/Index?id=@ViewBag.HistoriaClinicaId.PersonaId"><i class="fas fa-times"></i> Cancelar</a>
+            </div>
+        </div>
+    </form>
+
+</div>

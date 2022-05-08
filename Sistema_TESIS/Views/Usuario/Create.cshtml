@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Create";
+}
+
+<div class="card h-75 mt-lg-5">
+    <div class="text-center mt-3 mb-3">
+    <h3 class="card-title">Crear nuevo usuario</h3>
+    </div>
+    <form action="/Usuario/Create" method="post">
+        <div class="row my-3 mx-3">
+            <div class="col-xl-6 mb-3">
+                <label>Tipo de usuario</label>
+                <select class="custom-select" name="TipoId">
+                    <option>--Escoja una opcion--</option>
+                    @foreach (var Tipo in ViewBag.Tipo)
+                    {
+                        <option value="@Tipo.TipoId">@Tipo.Descripcion</option>
+                    }
+                </select>
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Especialidad</label>
+                <input type="text" class="form-control" name="Especialidad" value="@Model.Especialidad" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Nombres</label>
+                <input type="text" class="form-control" name="Nombres" value="@Model.Nombres" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Apellidos</label>
+                <input type="text" class="form-control" name="Apellidos" value="@Model.Apellidos" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>DNI</label>
+                <input type="text" class="form-control" name="DNI" value="@Model.DNI" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Telefono</label>
+                <input type="text" class="form-control" name="Telefono" value="@Model.Telefono" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Nombre de Usuario</label>
+                <input type="text" class="form-control" name="NombreUsuario" value="@Model.NombreUsuario" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" name="Password" value="@Model.Password" />
+            </div>
+            <br class=" mt-5 mb-5" />
+            <div class="col-xl-6">
+                <button class="btn  btn-primary waves-effect">Crear Usuario</button>
+                <a href="/Usuario/Index" class="btn  btn-outline-primary waves-effect">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>

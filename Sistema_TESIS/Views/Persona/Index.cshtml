@@ -1,0 +1,30 @@
+﻿
+@{ Layout = null;
+                ViewData["Title"] = "Index"; }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<div>
+    <div><h3>@Html.ValidationMessage("Resultado")</h3></div>
+    @foreach (var item in Model)
+    {
+<div class=" row card w-90 mx-3 my-3">
+    <div class="card-body row">
+        <div class="col-md-12">
+            <h3 class="card-title text-dark">@item.Nombres @item.Apellidos</h3>
+        </div>
+        <div class="col-md-8">
+            <p>Dni: @item.DNI</p>
+            <p>Celular: @item.NroCelular</p>
+        </div>
+        <div class="col-md-4">
+            <a href="/HistoriaClinica/Index?id=@item.PersonaId" class="btn btn-outline-cyan">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </a>
+        </div>
+
+    </div>
+</div>}
+</div>
+
+

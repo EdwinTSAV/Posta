@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Ver";
+}
+
+<div class="row card w-90 mx-3 my-3">
+    <div class="col-xl-12 text-center mt-3 mb-3">
+        <h2 class="card-title text-dark font-weight-bold" >Detalles de Atencion</h2>
+    </div>
+    <div class="row my-3 mx-3">
+        <div class="col-xl-4 ">
+            <p><label class="text-dark">Fecha de atencion:</label> <br />  @Model.Fecha.ToShortDateString()</p>
+        </div>
+        <div class="col-xl-4 ">
+            <p><label class="text-dark">Hora de atencion:</label> <br />  @String.Format("{0:hh:MM:ss}", Model.Fecha)</p>
+        </div>
+        <div class="col-xl-4 ">
+            <p><label class="text-dark">Tipo de Monitoreo:</label> <br /> @Model.TipoMonitoreo</p>
+        </div>
+        <div class="col-xl-12 ">
+            <div class="row">
+                @if (ViewBag.funcionesVitales != null)
+                {
+    <div class="col-md-12 ">
+        <p><label class="text-dark font-weight-bold">Funciones vitales:</label> <br /></p>
+    </div>
+                    <div class="col-xs-3 my-3 mx-3">
+                        <p><label class="text-dark">Presion Arterial: </label> <br />  @ViewBag.funcionesVitales.PresionArterialSistolica / @ViewBag.funcionesVitales.PresionArterialDiastolica</p>
+                    </div>
+                                    <div class="col-xs-3  my-3 mx-3">
+                                        <p><label class="text-dark">Frecuencia Cardiaca:</label> <br /> @ViewBag.funcionesVitales.FrecuenciaCardiaca</p>
+                                    </div>
+                                                    <div class="col-xs-3  my-3 mx-3">
+                                                        <p><label class="text-dark">Frecuenca Respiratoria:</label> <br /> @ViewBag.funcionesVitales.FrecuencaRespiratoria </p>
+                                                    </div>
+                                                                    <div class="col-xs-3  my-3 mx-3">
+                                                                        <p><label class="text-dark">Temperatura:</label> <br /> @ViewBag.funcionesVitales.Temperatura °C </p>
+                                                                    </div>}
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <label><label class="text-dark">Signos y sintomas</label> <br /></label>
+            @foreach (var item in ViewBag.Sintomas)
+            {
+                if (item.EstaMarcado)
+                {
+    <p>@item.Sintoma</p>}
+}
+        </div>
+        <div class="col-xl-4">
+            <label><label class="text-dark">Sintomas de alarma</label> <br /></label>
+            @foreach (var item in ViewBag.SintomasAlarma)
+            {
+                if (item.EstaMarcado)
+                {
+    <p>@item.Sintoma</p>}
+}
+        </div>
+        <div class="col-xl-4">
+            <p><label class="text-dark">Estado:</label> <br /> @Model.Estado</p>
+        </div>
+        <div class="col-xl-12">
+            @if (Model.Observaciones != null)
+            {
+    <p><label class="text-dark">Observaciones:</label> <br /> @Model.Observaciones</p>}
+        </div>
+
+        <div class="col-xl-12">
+            <p><label class="text-dark">Antecedentes:</label> <br /> @Model.Antecedentes</p>
+        </div>
+        <div class="col-xl-12">
+            <p>
+                <label class="text-dark">Examenes realizados:</label>
+                @if (Model.Examen == "Otro")
+                {
+                    <br />
+                    <span>Traslado necesario a otro hospital</span>
+                }
+                else
+                {
+                    <br />
+                    <span>@Model.Examen</span>
+                }
+            </p>
+        </div>
+        
+        <div class="col-xl-12">
+            <p><label class="text-dark">Diagnostico brindado:</label> <br /> @Model.Diagnostico</p>
+        </div>
+
+        <div class="col-xl-4 ">
+            <p>
+                <label class="text-dark">Atendido por el especialista:</label>
+                <br /> @Model.Usuario.Nombres @Model.Usuario.Apellidos
+            </p>
+        </div>
+        <div class="col-xl-4 ">
+            <p>
+                <label class="text-dark">Especialidad:</label>
+                <br /> @Model.Usuario.Especialidad
+            </p>
+        </div>
+
+    </div>
+    <div class="row my-3 mx-3" align="center">
+        <div class="col-xl-6">
+            <a href="/receta/index?CuadroClinicoId=@Model.CuadroClinicoId" class="btn btn-outline-blue">Ver Receta</a>
+        </div>
+        <div class="col-xl-6">
+            <a href="/receta/create?CuadroClinicoId=@Model.CuadroClinicoId" class="btn btn-outline-blue">Añadir medicamento</a>
+        </div>
+    </div>
+</div>

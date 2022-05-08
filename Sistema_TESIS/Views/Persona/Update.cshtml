@@ -1,0 +1,172 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Update";
+}
+
+<div class="card h-75 mt-lg-5">
+    <div class="text-center mt-3 mb-3">
+        <h3 class="card-title text-dark font-weight-bold">Registrar Paciente</h3>
+    </div>
+    <form action="/Persona/Update" method="post">
+        <p class="text-danger">@Html.ValidationMessage("Paciente")</p>
+        <input type="hidden" class="form-control" name="PersonaId" value="@Model.PersonaId" />
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12 md-3">
+                <h4 class="card-subtitle text-justify font-weight-bold">Datos personales</h4>
+            </div>
+            <br />
+            <div class="col-xl-6 mb-3">
+                <label class="label">Nombres</label>
+                <input type="text" class="form-control" name="Nombres" value="@Model.Nombres" />
+                @Html.ValidationMessage("Nombre")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label class="label">Apellidos</label>
+                <input type="text" class="form-control" name="Apellidos" value="@Model.Apellidos" />
+                @Html.ValidationMessage("Apellido")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label class="label">DNI</label>
+                <input type="text" class="form-control" name="DNI" value="@Model.DNI" />
+                @Html.ValidationMessage("DNI")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Fecha de Nacimiento</label>
+                <input type="date" class="form-control" name="FechaNacimiento" value="@Model.FechaNacimiento" />
+                @Html.ValidationMessage("FechaNacimiento")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Sexo</label>
+                <select class="custom-select " name="Sexo">
+                    @if (Model.Sexo == "M")
+                    {
+                        <option value="">--Seleccione sexo--</option>
+                                        <option value="M" selected>Masculino</option>
+                                                        <option value="F">Femenino</option>
+                                                    }
+                                                    else if (Model.Sexo == "F")
+                                                    {
+                                        <option value="">--Seleccione sexo--</option>
+                                                        <option value="M">Masculino</option>
+                                                                        <option value="F" selected>Femenino</option>
+                                                                    }
+                </select>
+                @Html.ValidationMessage("Sexo")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Estado Civil</label>
+                <select class="custom-select " name="EstadoCivil">
+                    @if (Model.EstadoCivil == "Soltero")
+                    {
+        <option value="">--Seleccione estado civil--</option>
+                        <option value="Soltero" selected>Soltero</option>
+                                        <option value="Casado">Casado</option>
+                                                        <option value="Viudo">Viudo</option>
+                                                                        <option value="Divorciado">Divorciado</option>
+                                                                    }
+                                                                    else if (Model.EstadoCivil == "Casado")
+                                                                    {
+                                                        <option value="">--Seleccione estado civil--</option>
+                                                                        <option value="Soltero">Soltero</option>
+                                                                                        <option value="Casado" selected>Casado</option>
+                                                                                                        <option value="Viudo">Viudo</option>
+                                                                                                                        <option value="Divorciado">Divorciado</option>
+                                                                                                                    }
+                                                                                                                    else if (Model.EstadoCivil == "Viudo")
+                                                                                                                    {
+                                                                                                        <option value="">--Seleccione estado civil--</option>
+                                                                                                                        <option value="Soltero">Soltero</option>
+                                                                                                                                        <option value="Casado">Casado</option>
+                                                                                                                                                        <option value="Viudo" selected>Viudo</option>
+                                                                                                                                                                        <option value="Divorciado">Divorciado</option>
+                                                                                                                                                                    }
+                                                                                                                                                                    else if (Model.EstadoCivil == "Divorciado")
+                                                                                                                                                                    {
+                                                                                                                                                                        <option value="">--Seleccione estado civil--</option>
+                                                                                                                                                                                        <option value="Soltero">Soltero</option>
+                                                                                                                                                                                                        <option value="Casado">Casado</option>
+                                                                                                                                                                                                                        <option value="Viudo">Viudo</option>
+                                                                                                                                                                                                                                        <option value="Divorciado" selected>Divorciado</option>
+                                                                                                                                                                                                                                    }
+                </select>
+                @Html.ValidationMessage("EstadoCivil")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Alergias</label>
+                <input type="text" class="form-control" name="Alergias" value="@Model.Alergias" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Intervenciones quirurgicas</label>
+                <input type="text" class="form-control" name="CondicionDeRiesgo" value="@Model.CondicionDeRiesgo" />
+                @Html.ValidationMessage("CondicionDeRiesgo")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Vacunas Completas</label>
+                <select class="custom-select " name="Vacunas">
+                    @if (Model.Vacunas == "Si")
+                    {
+        <option value="">-- Seleccione una opcion --</option>
+                        <option value="Si" selected>Si</option>
+                                        <option value="No">No</option>
+                                    }
+                                    else if (Model.Vacunas == "No")
+                                    {
+                        <option value="">-- Seleccione una opcion --</option>
+                                        <option value="Si">Si</option>
+                                                        <option value="No" selected>No</option>
+                                                    }
+                </select>
+                @Html.ValidationMessage("Vacunas")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Ocupacion</label>
+                <input type="text" class="form-control" name="Ocupacion" value="@Model.Ocupacion" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Talla</label>
+                <input type="text" class="form-control" name="Talla" value="@Model.Talla" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Peso</label>
+                <input type="text" class="form-control" name="Peso" value="@Model.Peso" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Responsable</label>
+                <input type="text" class="form-control" name="Responsable" value="@Model.Responsable" />
+            </div>
+        </div>
+        <hr />
+        <div class="row my-3 mx-3">
+            <div class="col-xl-12 md-3">
+                <h4 class="card-subtitle text-justify font-weight-bold">Datos de contacto</h4>
+            </div>
+            <br />
+            <div class="col-xl-6 mb-3">
+                <label class="label">Celular</label>
+                <input class="form-control" type="text" name="NroCelular" value="@Model.NroCelular" />
+                @Html.ValidationMessage("NroCelular")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Correo electrónico</label>
+                <input type="text" class="form-control" name="CorreoElectronico" value="@Model.CorreoElectronico" />
+                @Html.ValidationMessage("CorreoElectronico")
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Telefono de emergencia</label>
+                <input type="text" class="form-control" name="TelefonoEmergencia" value="@Model.TelefonoEmergencia" />
+                @Html.ValidationMessage("TelefonoEmergencia")
+            </div>
+        </div>
+        <hr />
+        <div class="row my-3 mx-3 text-right">
+            <div class="align-content-end my-3 mx-auto">
+                <a href="/Usuario/Index" class="btn btn-block danger-color text-white">Cancelar</a>
+            </div>
+            <div class="align-content-end my-3 mx-auto">
+                <button class="btn btn-block success-color text-white">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/site2.js"></script>

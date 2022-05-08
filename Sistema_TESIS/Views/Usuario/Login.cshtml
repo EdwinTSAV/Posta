@@ -1,0 +1,35 @@
+﻿@{ Layout = null;
+    ViewData["Title"] = "Login"; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="shortcut icon" href="/css/images/historia-clinica.png">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Montez|Pathway+Gothic+One" rel="stylesheet">
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <h1 class="title">Centro de Salud</h1>
+            <a href="">Huañimba</a>
+        </header>
+        <div class="login">
+            <article class="fondo">
+                <img src="/css/images/AvatarDoctor2.jpg" alt="User">
+                <h3>Inicio de Sesión</h3>
+                <h5 class="red-text">@Html.ValidationMessage("Usuario")</h5>
+                <form class="" action="/Usuario/Login" method="post">
+                    <span class="icon-user"></span><input class="inp" type="text" id="defaultLoginFormEmail" name="nombreUsuario" placeholder="Usuario"><br>
+                    <span class="icon-key"></span><input class="inp" type="password" id="defaultLoginFormPassword" name="password" placeholder="Contraseña"><br>
+                    @*<a href="" class="he">He olvidado mi contraseña</a>*@
+                    <input class="boton" type="submit" name="inicio" value="Iniciar Sesión">
+                </form>
+            </article>
+        </div>
+
+    </div>
+</body>
+</html>

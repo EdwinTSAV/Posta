@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-xl-4 text-left my-3 mx-3">
+    <h3 class="card-title blue-text font-weight-bold">Receta</h3>
+</div>
+
+<div class="col-xl-12 my-3">
+    <table class="table">
+        <thead class="light-blue text-white">
+            <tr>
+                <th scope="col">Medicamento</th>
+                <th scope="col">Dosis</th>
+                <th scope="col">Duracion</th>
+                <th scope="col">Cantidad</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <th scope="row">@item.Medicamento</th>
+                <td>@item.Dosis</td>
+                <td>@item.Duracion</td>
+                <td>@item.Cantidad</td>
+                <td><a href="/receta/delete?RecetaId=@item.RecetaId" class="btn btn-outline-danger">Eliminar</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

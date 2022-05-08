@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Ver";
+}
+
+<div class="row card w-90 mx-3 my-3">
+    <div class="col-xl-12 text-center mt-3 mb-3">
+        <h2 class="card-title text-dark font-weight-bold" >Detalles de la prueba</h2>
+    </div>
+    <div class="row my-3 mx-3">
+        <div class="col-xl-5 ">
+            <p><label class="text-dark">Fecha de realizacion de la prueba:</label><br /> @Model.FechaHoraRealizada.ToShortDateString()</p>
+        </div>
+        <div class="col-xl-4 ">
+            <p><label class="text-dark">Tipo de muestra:</label><br /> @Model.TipoMuestra</p>
+        </div>
+        <div class="col-xl-3 ">
+            <p><label class="text-dark">Resultado:</label><br /> @Model.Resultado</p>
+        </div>
+        <div class="col-xl-12 ">
+
+        </div>
+
+        <div class="col-xl-12">
+            @if (Model.Observacion != null)
+            {
+                <p><label class="text-dark">Observaciones:</label><br /> @Model.Observacion</p>
+            }
+        </div>
+    </div>
+</div>

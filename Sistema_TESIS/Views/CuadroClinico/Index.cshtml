@@ -1,0 +1,48 @@
+﻿
+@{ Layout = null;
+                ViewData["Title"] = "Index";
+                var cuadroC = (List<CuadroClinico>)Model; }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<div class="col-xl-4 text-left my-3 mx-3">
+    <h3 class="card-title blue-text font-weight-bold">Seguimiento Clinico</h3>
+</div>
+<div class="col-xl-6 text-right my-3 mx-3">
+    <a href="/CuadroClinico/Create?personaId=@ViewBag.Historia" class="btn btn-outline-success"><i class="fas fa-notes-medical"></i> Nueva ficha de seguimiento clínico</a>
+</div>
+<div class="col-xl-12 my-3">
+    <table class="table">
+        <thead class="light-blue text-white">
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Observaciones</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in cuadroC)
+            {
+<tr>
+    <th scope="row">@item.Fecha.ToShortDateString()</th>
+    <td>@item.Estado</td>
+    <td>@item.Observaciones</td>
+    <td>
+        <a href="/CuadroClinico/Ver?id=@item.CuadroClinicoId" class="btn btn-outline-default">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
+        @{string pdfH = item.Fecha.ToString("ddMMyyy") + item.CuadroClinicoId + ".pdf";}
+        <a href="~/Historia/@pdfH" class="btn btn-outline-cyan">
+            <i class="fa fa-file-text" aria-hidden="true"></i>
+        </a>
+        @{string pdfR = item.PersonaId + item.CuadroClinicoId + ".pdf";}
+        <a href="~/Recetas/@pdfR" class="btn btn-outline-cyan">
+            <i class="fa fa-medkit" aria-hidden="true"></i>
+        </a>
+    </td>
+</tr>            }
+
+        </tbody>
+    </table>
+</div>

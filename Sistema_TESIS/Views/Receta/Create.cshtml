@@ -1,0 +1,39 @@
+﻿
+@{ Layout = "_Layout2";
+                ViewData["Title"] = "Create"; }
+
+<div class="card h-75 mt-lg-5">
+    <div class="text-center mt-3 mb-3">
+        <h3 class="card-title text-dark font-weight-bold">Añadir medicamento</h3>
+    </div>
+    <form action="/Receta/Create" method="post">
+        <input type="hidden" name="CuadroClinicoId" value="@ViewBag.CuadroClinicoId" />
+        <div class="row my-3 mx-3">
+            <div class="col-xl-6 mb-3">
+                <label class="label">Ingrese el medicamento</label>
+                <input class="form-control" name="Medicamento" @Model.Medicamento />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Dosis</label>
+                <input type="text" class="form-control" name="Dosis" value="@Model.Dosis" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Duracion</label>
+                <input type="text" class="form-control" name="Duracion" value="@Model.Duracion" />
+            </div>
+            <div class="col-xl-6 mb-3">
+                <label>Cantidad</label>
+                <input type="text" class="form-control" name="Cantidad" value="@Model.Cantidad" />
+            </div>
+        </div>
+        <div class="row my-3 mx-3 text-right">
+            <div class="align-content-end my-3 mx-auto">
+                <a href="/Usuario/Index" class="btn btn-block danger-color text-white">Cancelar</a>
+            </div>
+            <div class="align-content-end my-3 mx-auto">
+                <button class="btn btn-block success-color text-white">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/site2.js"></script>

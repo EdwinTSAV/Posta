@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Index";
+}
+
+<div class="card my-3 mx-3">
+    <div class="row">
+        <div class="col-12  my-3 mx-3">
+            <div class="text-center">
+                <span><i class="bi bi-person-lines-fill"></i></span>
+                <h2 class="card-title">Pacientes</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-12  my-3 mx-3">
+        <form class="row" action="/Usuario/Index" method="post">
+            <div class="col-4">
+                <label class="label">Nombre</label>
+                <input class="form-control" type="text" id="Nombre" value="" />
+            </div>
+            <div class="col-2">
+                <label class="label">DNI</label>
+                <input class="form-control" type="text" id="Dni" value="" />
+            </div>
+            <div class=" my-4 mr-3">
+                <button class="btn btn-success text-white" id="Buscar">Buscar <i class="fas fa-search"></i></button>
+                <button class="btn btn-danger text-white" id="Clean">Borrar filtros <i class="fas fa-broom"></i></button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="align-content-end">
+                <a href="/Persona/Create" class="btn btn-outline-blue">Nuevo <i class="fas fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="" id="BusquedaResult">
+
+</div>
+
+<script>
+
+    var nombre = $('#Nombre');
+    var dni = $('#Dni');
+    function buscarPaciente() {
+        $.ajax({
+            url: '/Persona/Index?nombre=' + nombre.val() + '&&dni=' + dni.val()
+        }).done(function (index) {
+            $('#BusquedaResult').html(index);
+        });
+    }
+    buscarPaciente();
+    var buscar = $('#Buscar').click(function (e) {
+        e.preventDefault();
+        buscarPaciente();
+    });
+    nombre.keyup(function (e) {
+        e.preventDefault();
+        buscarPaciente();
+    });
+    dni.keyup(function (e) {
+        e.preventDefault();
+        buscarPaciente();
+    });
+    $('#Clean').click(function (e){
+        e.preventDefault();
+        nombre.val("");
+        dni.val("");
+        buscarPaciente();
+    });
+</script>

@@ -1,0 +1,52 @@
+﻿
+@{ Layout = "_Layout2";
+    ViewData["Title"] = "Index"; }
+
+<div>
+    <div class=" row card w-90 mx-3 my-3">
+        <div class="card-body row">
+            <div class="col-md-5 mx-3">
+                <h3 class="card-title text-dark">@Model.Nombres @Model.Apellidos</h3>
+            </div>
+            <div class="col-md-6 align-content-end">
+                <div class="text-right">
+                    @*<a href="/Prueba/Create?historiaClinicaId=@Model.CuadroClinico.CuadroClinicoId" class="btn btn-outline-blue-grey">Nueva prueba</a>*@
+                    <a href="/Persona/Update?PersonaId=@Model.PersonaId" class="btn btn-outline-cyan">Editar Persona</a>
+                </div>
+            </div>
+
+            <div class="col-md-12 mx-3">
+                <div>
+                    <p>DNI: @Model.DNI</p>
+                </div>
+                <div>
+                    <p>Condición de riesgo: @Model.CondicionDeRiesgo</p>
+                </div>
+                <div>
+                    <p>Alergias: @Model.Alergias</p>
+                </div>
+                <div>
+                    <p>Estado: @Model.EstadoCivil</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div>
+    <input type="hidden" id="hClinId" value="@Model.PersonaId" />
+</div>
+<div id="historial">
+
+    <div class=" row card w-90 mx-3 my-3 blue-gradient">
+        <div class="row white my-3 mx-3 rounded" id="CuadroClinico">
+
+        </div>
+
+    </div>
+
+</div>
+<div id="Contactos">
+
+</div>
+<script src="~/js/Seguimiento.js"></script>
